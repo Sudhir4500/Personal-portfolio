@@ -3,13 +3,15 @@ import React, { useEffect,useState } from 'react'
 
 
 
+
 const Bio = () => {
     const [bio, setBio] = useState([]);
 
     // fetch bio from the Django REST framework API
     useEffect(
         ()=>{
-            axios.get("http://192.168.0.4:8000/about/").then((response)=>{
+            const apiUrl = process.env.REACT_APP_API_URL;
+            axios.get(`${apiUrl}/about/`).then((response)=>{
                 setBio(response.data);
             })
 

@@ -6,8 +6,9 @@ const Skills = () => {
 
   // Fetch skills from the Django REST framework API
   useEffect(() => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     axios
-      .get("http://192.168.0.4:8000/skills/")
+      .get(`${apiUrl}/skills/`)
       .then((response) => {
         setSkills(response.data);
       })

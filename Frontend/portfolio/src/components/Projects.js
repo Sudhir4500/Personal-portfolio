@@ -9,8 +9,9 @@ const Projects = () => {
 
     // fetch data from the Django REST framework API
     useEffect(() => {
+        const apiUrl = process.env.REACT_APP_API_URL;
         axios
-          .get("http://192.168.0.4:8000/projects/")
+          .get(`${apiUrl}/projects/`)
           .then((response) => {
             setProjects(response.data);
             setLoading(false);

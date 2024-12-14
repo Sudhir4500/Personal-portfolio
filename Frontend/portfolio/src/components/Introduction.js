@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+// const apiurl=process.env.REACT_APP_API_URL;
+
 const IntroductionList = () => {
   const [introductions, setIntroductions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+ 
+
   useEffect(() => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     // Fetch data from the Django REST framework API
     axios
-      .get("http://192.168.0.4:8000")
+     
+      .get(`${apiUrl}`)
       .then((response) => {
         setIntroductions(response.data);
         setLoading(false);

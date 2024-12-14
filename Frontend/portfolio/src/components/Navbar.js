@@ -30,8 +30,9 @@ const Navbar = () => {
 
   // Fetch data from the API
   useEffect(() => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     axios
-      .get("http://192.168.0.4:8000/logo/")
+      .get(`${apiUrl}/logo/`)
       .then((response) => {
         setLogos(response.data);
         setLoading(false);

@@ -18,7 +18,8 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://192.168.0.4:8000/contact/", formData)
+        const apiUrl = process.env.REACT_APP_API_URL;
+        axios.post(`${apiUrl}/contact/`, formData)
             .then((response) => {
                 setResponseMessage("Thank you for contacting us!");
                 setFormData({

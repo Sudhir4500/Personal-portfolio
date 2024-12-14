@@ -10,8 +10,9 @@ const Services = () => {
     // Fetch data from the Django REST framework API
     useEffect(() => {
         const fetchData = async () => {
+            const apiUrl = process.env.REACT_APP_API_URL;
             try {
-                const response = await axios.get("http://192.168.0.4:8000/myservices/");
+                const response = await axios.get(`${apiUrl}/myservices/`);
                 setServices(response.data);
             } catch (err) {
                 setError(err.message);
