@@ -7,6 +7,7 @@
 html , body {
   height: 100%;
   margin: 0;
+  padding: 0;
   
 }
 
@@ -16,17 +17,17 @@ body {
   color: #333;
 }
 
-bg-img{
+/* bg-img{
   background-image: url('../src/assets/bg-img5.png');
-}
-html,body,*{
+} */
+/* html,body,*{
 margin:0;
 padding:0;
 
-}
+} */
 
 
-img{
+/* img{
   border-radius: 50%;
   max-height:500px;
   max-width:500px;
@@ -34,6 +35,40 @@ img{
   min-width:500px;
   object-fit: cover;
   object-position: 60% 20%;
-  /* border: 10px solid #fff; */
+  border: 10px solid #fff;
 
+} */
+
+.profile-image {
+  border-radius: 50%;
+  max-height: 440px;
+  max-width: 440px;
+  min-height: 440px;
+  min-width: 440px;
+  object-fit: cover;
+  object-position: 60% 20%;
+  border: 10px solid #fff;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .profile-image {
+    max-height: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    min-width: 400px;
+    border-width: 5px; /* Reduce border width on smaller screens */
+    border: 10px solid #fff;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image {
+    max-height: 350px;
+    max-width: 350px;
+    min-height: 350px;
+    min-width: 350px;
+    border-width: 3px; /* Further reduce border width on very small screens */
+    border: 10px solid #fff;
+  }
 }

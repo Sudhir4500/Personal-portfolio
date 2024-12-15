@@ -28,7 +28,7 @@ const Services = () => {
         <section id="services" className="text-gray-600 body-font">
             <h2 className="mb-8 text-center text-3xl lg:text-4xl">My Services</h2>
             <div className="container px-5 py-24 mx-auto">
-                <div className="flex flex-wrap -m-4">
+                <div className=" md:container w-auto  flex flex-wrap -m-4">
                     {loading ? (
                         <p>Loading...</p>
                     ) : error ? (
@@ -40,7 +40,7 @@ const Services = () => {
                                     <div className="flex items-center mb-3 ">
                                         <img
                                             alt={service.service_title}
-                                            className="w-12 h-12 bg-gray-200 object-cover object-center flex-shrink-0 rounded-full mr-4 overflow-hidden"
+                                            className=" h-full w-full  bg-gray-200 object-cover flex-shrink-0 rounded-lg mr-4 overflow-hidden"
                                             src={service.service_image}
                                         />
                                        

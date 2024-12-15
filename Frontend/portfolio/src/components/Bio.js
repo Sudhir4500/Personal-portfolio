@@ -19,7 +19,7 @@ const Bio = () => {
     )
         
   return (
-    <section className=" pt-20" id="bio">
+    <section className="pt-0 lg:pt-20" id="bio">
     <h2 className=" mb-8 text-center text-3xl  lg:text-4xl">Bio</h2>
     <div className=' flex min-h-screen flex-wrap items-center'>
         {bio.map((bio) => (
@@ -29,7 +29,7 @@ const Bio = () => {
                     <img
                         src={bio.image}
                         alt="profile_pic"
-                        className="custom-position border-[10px] border-white ml-[50px] "
+                        className=" profile-image"
                     />
                 </div>
             </div>

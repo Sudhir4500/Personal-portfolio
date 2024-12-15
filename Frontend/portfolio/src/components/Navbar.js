@@ -46,34 +46,34 @@ const Navbar = () => {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 w-full m-0 p-0">
       {/* Desktop Navbar */}
-      <div className="mx-auto hidden max-w-6xl items-center justify-between rounded-lg border border-stone-50/30 bg-black/20 py-3 px-6  backdrop-blur-lg lg:flex">
+      <div className="mx-auto hidden max-w-5xl items-center justify-between rounded-lg border border-stone-50/30 bg-black/20  px-6 backdrop-blur-lg lg:flex">
         {/* Logo Section */}
-        <div className="flex items-center w-3 h-2">
+        <div className="flex items-center gap-4">
           {loading ? (
             <p className="text-white">Loading logos...</p>
           ) : error ? (
             <p className="text-red-500">{`Error loading logos: ${error}`}</p>
           ) : (
             logos.map((logo, index) => (
+              <a href="/home" >
               <div key={index} className="flex items-center gap-2">
                 <img
-                  src={logo.logo} // Make sure the URL is valid here
+                  src={logo.logo}
                   alt={`Logo ${index}`}
-                  width={50}
-                  height={50}
-                  className="rounded-full object-contain"
+                  className="rounded-full w-16 h-16 transition-transform duration-300 hover:scale-110 shadow-lg border-4 border-white"
                 />
                 {logo.name && (
-                  <h2 className="text-white text-sm">{logo.name}</h2>
+                  <h2 className="text-white text-sm font-semibold">{logo.name}</h2>
                 )}
               </div>
+              </a>
             ))
           )}
         </div>
 
         {/* Navigation Links */}
         <div className="flex items-center gap-8">
-          {["#home","#bio","#skills","#projects","#services", "#contact"].map(
+          {["#home", "#bio", "#skills", "#projects", "#services", "#contact"].map(
             (link, index) => (
               <a
                 key={index}
@@ -90,7 +90,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navbar */}
-      <div className="lg:hidden fixed w-full bg-black/70 py-2  px-6 backdrop-blur-md z-50 top-0">
+      <div className="lg:hidden fixed w-full bg-black/70 py-2 px-6 backdrop-blur-md z-50 top-0">
         <div className="flex items-center justify-between">
           {/* Logo */}
           {loading ? (
@@ -100,11 +100,16 @@ const Navbar = () => {
           ) : (
             logos[0] && logos[0].logo && ( // Make sure logo exists and is valid
               <div
-                className="w-10 h-10 bg-cover bg-center mr-4 rounded-lg border border-white"
-                style={{
-                  backgroundImage: `url(${logos[0].logo})`, // Ensure proper URL usage
-                }}
-              ></div>
+                className="w-12 h-12 bg-cover bg-center mr-4 rounded-full">
+                  <a href="/home">
+                <img
+                  src={logos[0].logo}
+                  alt="Logo"
+                  className="rounded-full w-12 h-12 shadow-lg border-4 "
+                />
+                </a>
+                
+              </div>
             )
           )}
 
@@ -121,7 +126,7 @@ const Navbar = () => {
         {/* Mobile Menu Links */}
         {isMobMenu && (
           <div className="mt-4 flex flex-col items-center gap-4">
-            {["#home","#bio","#skills","#projects", "#services", "#contact"].map(
+            {["#home", "#bio", "#skills", "#projects", "#services", "#contact"].map(
               (link, index) => (
                 <a
                   key={index}
