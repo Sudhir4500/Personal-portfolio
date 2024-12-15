@@ -11,20 +11,28 @@ const IntroductionList = () => {
  
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-    // Fetch data from the Django REST framework API
-    axios
-     
-      .get(`${apiUrl}`)
-      .then((response) => {
+    const fetchData = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+  
+      if (!apiUrl) {
+        setError("API URL is not defined.");
+        setLoading(false);
+        return;
+      }
+  
+      try {
+        const response = await axios.get(apiUrl);
         setIntroductions(response.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Failed to fetch data. Please try again later.");
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   if (loading) {
     return <p>Loading...</p>;

@@ -30,18 +30,44 @@ const Navbar = () => {
 
   // Fetch data from the API
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-    axios
-      .get(`${apiUrl}/logo/`)
-      .then((response) => {
-        setLogos(response.data);
+    const fetchLogos = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+  
+      // Validate the environment variable
+      if (!apiUrl) {
+        console.error("API URL is not defined. Please check your environment variables.");
+        setError("API URL is missing. Please configure the environment variables.");
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+        return;
+      }
+  
+      const controller = new AbortController(); // For aborting the request on cleanup
+      const signal = controller.signal;
+  
+      try {
+        const response = await axios.get(`${apiUrl}/logo/`, { signal, timeout: 5000 }); // 5-second timeout
+        setLogos(response.data); // Update state with the fetched data
+      } catch (err) {
+        if (axios.isCancel(err)) {
+          console.log("Fetch logos request cancelled.");
+        } else {
+          console.error("Error fetching logos:", err);
+          setError(err.response?.data?.message || "Failed to fetch logos. Please try again later.");
+        }
+      } finally {
+        setLoading(false); // Ensure loading is turned off
+      }
+  
+      // Cleanup: Abort the request if the component unmounts
+      return () => {
+        controller.abort();
+      };
+    };
+  
+    fetchLogos();
   }, []);
+  
+
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 w-full m-0 p-0">

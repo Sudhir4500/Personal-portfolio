@@ -3,19 +3,25 @@ import axios from "axios";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
+  const [error, setError] = useState(null);
 
   // Fetch skills from the Django REST framework API
-  useEffect(() => {
+ useEffect(()=>{
+  const fetchSkills = async () => {
     const apiUrl = process.env.REACT_APP_API_URL;
-    axios
-      .get(`${apiUrl}/skills/`)
-      .then((response) => {
-        setSkills(response.data);
-      })
-      .catch((err) => {
-        console.error("Error fetching skills:", err);
-      });
-  }, []); // Dependency array ensures this runs only once
+    try {
+      const response = await axios.get(`${apiUrl}/skills/`);
+      setSkills(response.data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  fetchSkills();
+ },[]);
+
+ if (error) {
+  return <p>Error: {error}</p>;
+}
 
   // Helper function to get logo URL from a CDN
   const getLogoUrl = (name) => {

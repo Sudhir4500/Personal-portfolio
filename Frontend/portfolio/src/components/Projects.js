@@ -9,18 +9,30 @@ const Projects = () => {
 
     // fetch data from the Django REST framework API
     useEffect(() => {
+      const fetchProjects = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
-        axios
-          .get(`${apiUrl}/projects/`)
-          .then((response) => {
-            setProjects(response.data);
-            setLoading(false);
-          })
-          .catch((err) => {
-            setError(err.message);
-            setLoading(false);
-          });
-      }, []);
+  
+        if (!apiUrl) {
+          console.error("API URL is not defined. Please check your environment variables.");
+          setError("API URL is missing. Please configure your environment variables.");
+          setLoading(false);
+          return;
+        }
+  
+        try {
+          const response = await axios.get(`${apiUrl}/projects/`, { timeout: 5000 });
+          setProjects(response.data);
+        } catch (err) {
+          console.error("Error fetching projects:", err);
+          setError(err.response?.data?.message || "Failed to fetch projects. Please try again later.");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchProjects();
+    }, []);
+
   return (
     <section id="projects" className="pt-20 ">
         <h2 className=" mb-8 text-center text-3xl lg:text-4xl">Projects</h2>

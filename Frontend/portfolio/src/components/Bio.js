@@ -8,15 +8,26 @@ const Bio = () => {
     const [bio, setBio] = useState([]);
 
     // fetch bio from the Django REST framework API
-    useEffect(
-        ()=>{
-            const apiUrl = process.env.REACT_APP_API_URL;
-            axios.get(`${apiUrl}/about/`).then((response)=>{
-                setBio(response.data);
-            })
-
-        }
-    )
+    useEffect(() => {
+        const fetchBio = async () => {
+          const apiUrl = process.env.REACT_APP_API_URL;
+      
+          if (!apiUrl) {
+            console.error("API URL is not defined. Please check your environment variables.");
+            return;
+          }
+      
+          try {
+            const response = await axios.get(`${apiUrl}/about/`);
+            setBio(response.data);
+          } catch (err) {
+            console.error("Error fetching bio:", err);
+          }
+        };
+      
+        fetchBio();
+      }, []);
+      
         
   return (
     <section className="pt-0 lg:pt-20" id="bio">
