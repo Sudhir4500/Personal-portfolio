@@ -35,33 +35,33 @@ const IntroductionList = () => {
   }
 
   return (
-    <section id="home" className="flex min-h-screen flex-wrap items-center py-2 ">
-      {introductions.map((introduction) => (
-        <>
-          <div key={introduction.id} className="w-full md:w-1/2">
-            <h2 className="my-8 text-4xl font-bold md:text-5xl lg:text-[4rem]">
-              {introduction.name}..
-            </h2>
-            <p className="mb-8 text-3xl md:text-xl tracking-tight lg:text-4xl">
-              {introduction.greet}
-            </p>
-            <p className="mb-8 p-2 text-xl">
-              {introduction.description}
-            </p>
+    <section id="home" className="flex min-h-screen flex-wrap items-center py-2">
+  {introductions.map((introduction) => (
+    <React.Fragment key={introduction.id}>
+      <div className="w-full md:w-1/2">
+        <h2 className="my-8 text-4xl font-bold md:text-5xl lg:text-[4rem]">
+          {introduction.name}..
+        </h2>
+        <p className="mb-8 text-3xl md:text-xl tracking-tight lg:text-4xl">
+          {introduction.greet}
+        </p>
+        <p className="mb-8 p-2 text-xl">
+          {introduction.description}
+        </p>
+      </div>
+      <div className="w-full md:w-1/2 lg:p-8">
+        <div className="flex justify-center header">
+          <img
+            src={introduction.image}
+            alt="profile_pic"
+            className="profile-image"
+          />
         </div>
-          <div className="w-full md:w-1/2 lg:p-8">
-            <div className="flex justify-center header ">
-              <img
-                src={introduction.image}
-                alt="profile_pic"
-                className="custom-position border-[10px] border-white ml-[50px] "
-              />
-            </div>
-            
-          </div>
-          </>
-      ))}
-    </section>
+      </div>
+    </React.Fragment>
+  ))}
+</section>
+
   );
 };
 

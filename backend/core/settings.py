@@ -47,9 +47,10 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",      # React app in local dev
-    "http://192.168.0.4:3000",    # React app for network access
+    "http://192.168.0.3:3000",    # React app for network access
     # Add other allowed origins if needed
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

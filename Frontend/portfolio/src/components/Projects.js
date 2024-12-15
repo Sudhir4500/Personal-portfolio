@@ -22,34 +22,38 @@ const Projects = () => {
           });
       }, []);
   return (
-    <section className=" pt-20" id="projects">
-    <h2 className=" mb-8 text-center text-3xl  lg:text-4xl">Projects</h2>
-    <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {loading?(
-            <p>Loading...</p>
-        ): error?(
-            <p>Error: {error}</p>
-        ):(
-            projects.map((project) => (
-                <div key={project.id} className="group relative overflow-hidden md:rounded-3xl ">
-                    <div className=" w-full ">
-                    <img src={project.image} alt="project_sample"
-                    className=" object-cover transition-transform duration-500 group-hover:scale-110 "/>
-                    </div>
-                    <div className=" absolute inset-0 flex flex-col items-center justify-center text-black opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100">
-                        <h3 className=" mb-2 text-xl">{project.title}</h3>
-                        <p className=" mb-12 p-4">{project.description}</p>
-                        <a href={project.url} target="blank" rel="noopener noreferrer" className=" bg-black text-white px-4 py-2 rounded-full">View Project</a>
+    <section id="projects" className="pt-20 ">
+        <h2 className=" mb-8 text-center text-3xl lg:text-4xl">Projects</h2>
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {loading ? (
+                <p>Loading...</p>
+            ) : error ? (
+                <p>Error: {error}</p>
+            ) : (
+                projects.map((project) => (
+                   
+                   <div key={project.id} className=" group relative overflow-hidden rounded-3xl">
+                    <img src={project.image} 
+                    alt={project.title}
+                    className=" h-[500px] w-[500px] object-cover transition-transform duration-500 group-hover:scale-110"/>
+                    <div className=" absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 group-hover:bg-black/70   text-white opacity-0 backdrop-blur-lg transition-opacity  duration-300 group-hover:opacity-100">
+                    <h3 className=" mb-2 text-xl">{project.title}</h3>
+                    <p className="text-sm mb-12 p-4">{project.description}</p>
+                    <h3 className=" text-sm  p-4">It is written in:<span className=" p-1 font-bold text-red-500 text-xl">{project.programming_languages}</span></h3>
+                    <a href={project.url}  className=" bg-white text-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors font-bold">View Project
+                        
+                    </a>
+                        
+                    
 
                     </div>
-                  
-                </div>
-            ))
-        )}
+                   </div>
+                ))
+            )}
 
-    </div>
+        </div>
 
-   </section>
+    </section>
   )
 }
 
