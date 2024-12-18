@@ -35,52 +35,52 @@ const ContactForm = () => {
     };
 
     return (
-        <div id="contact" className="flex items-center justify-center min-h-screen pb-10">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Contact Us</h1>
+        <div id="contact" className="flex items-center justify-center min-h-screen pb-10 ">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md dark:bg-gray-800 ">
+                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center dark:text-white">Contact Us</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <div >
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Name</label>
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Email</label>
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white"
                         />
                     </div>
                     <div >
-                        <label className="block text-sm font-medium text-gray-700 mb-1 ">Message</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white ">Message</label>
                         <textarea
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
                             required
-                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none relative space-y-4 "
+                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none relative space-y-4 dark:bg-gray-800 dark:text-white "
                             rows="4"
                         ></textarea>
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Service Type</label>
                         <input
                             type="text"
                             name="service_type"
                             value={formData.service_type}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white"
                         />
                     </div>
                     <button

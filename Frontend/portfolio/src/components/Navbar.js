@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Darkmode from "./Darkmode";
 
 const Navbar = () => {
   const [isMobMenu, setIsMobMenu] = useState(false);
@@ -51,7 +52,7 @@ const Navbar = () => {
         if (axios.isCancel(err)) {
           console.log("Fetch logos request cancelled.");
         } else {
-          console.error("Error fetching logos:", err);
+          // console.error("Error fetching logos:", err);
           setError(err.response?.data?.message || "Failed to fetch logos. Please try again later.");
         }
       } finally {
@@ -86,7 +87,7 @@ const Navbar = () => {
                 <img
                   src={logo.logo}
                   alt={`Logo ${index}`}
-                  className="rounded-full w-16 h-16 transition-transform duration-300 hover:scale-110 shadow-lg border-4 border-white"
+                  className="rounded-full w-16 h-16 transition-transform duration-300 hover:scale-110 shadow-lg border-4 border-white dark:border-gray-800"
                 />
                 {logo.name && (
                   <h2 className="text-white text-sm font-semibold">{logo.name}</h2>
@@ -112,6 +113,7 @@ const Navbar = () => {
               </a>
             )
           )}
+          <Darkmode />
         </div>
       </div>
 
@@ -126,7 +128,7 @@ const Navbar = () => {
           ) : (
             logos[0] && logos[0].logo && ( // Make sure logo exists and is valid
               <div
-                className="w-12 h-12 bg-cover bg-center mr-4 rounded-full">
+                className="w-12 h-12 bg-cover bg-center mr-4 rounded-full dark:bg-gray-800 dark:text-white">
                   <a href="/home">
                 <img
                   src={logos[0].logo}
@@ -165,6 +167,7 @@ const Navbar = () => {
                 </a>
               )
             )}
+            <Darkmode />  
           </div>
         )}
       </div>

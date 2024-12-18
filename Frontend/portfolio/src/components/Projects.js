@@ -23,7 +23,7 @@ const Projects = () => {
           const response = await axios.get(`${apiUrl}/projects/`, { timeout: 5000 });
           setProjects(response.data);
         } catch (err) {
-          console.error("Error fetching projects:", err);
+          // console.error("Error fetching projects:", err);
           setError(err.response?.data?.message || "Failed to fetch projects. Please try again later.");
         } finally {
           setLoading(false);

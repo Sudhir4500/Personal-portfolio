@@ -51,6 +51,8 @@ CORS_ALLOWED_ORIGINS = [
     # Add other allowed origins if needed
 ]
 
+ALLOWED_HOSTS=['*', 'localhost','127.0.0.1','10.0']
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

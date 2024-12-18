@@ -9,11 +9,11 @@ const Footer = () => {
     ];
   
     return (
-      <div className="relative h-full overflow-y-auto antialiased">
-        <footer className="flex flex-col items-center  text-white py-6">
-          <p className="mb-4 text-black">&copy; 2024 Portfolio. All rights reserved.</p>
+      <div className="relative h-full overflow-y-auto antialiased ">
+        <footer className="flex flex-col items-center  text-white py-6 ">
+          <p className="mb-4 text-black dark:bg-gray-800 dark:text-white">&copy; 2024 Portfolio. All rights reserved.</p>
           {/* Adding the social media links to contact us */}
-          <h3 className=" text-black p">Let’s stay connected! </h3>
+          <h3 className=" text-black dark:bg-gray-800 dark:text-white">Let’s stay connected! </h3>
           <div className="flex space-x-4">
             
             {socialMediaLinks.map((link) => (
