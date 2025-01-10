@@ -7,10 +7,10 @@
       "config": { "maxLambdaSize": "15mb", "runtime": "python3" }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "core/wsgi.py"
+      "source": "/(.*)",
+      "destination": "/core/wsgi.py"
     }
   ],
   "headers": [
@@ -19,7 +19,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*" 
+          "value": "*"  
         },
         {
           "key": "Access-Control-Allow-Methods",
