@@ -73,9 +73,9 @@ const Navbar = () => {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 w-full m-0 p-0">
       {/* Desktop Navbar */}
-      <div className="mx-auto hidden max-w-5xl items-center justify-between rounded-lg border border-stone-50/30 bg-black/20  px-6 backdrop-blur-lg lg:flex">
+      <div className="mx-auto hidden max-w-5xl items-center justify-between rounded-lg border border-stone-50/30 bg-black/20  px-6 backdrop-blur-lg lg:flex ">
         {/* Logo Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
           {loading ? (
             <p className="text-white">Loading logos...</p>
           ) : error ? (
@@ -105,7 +105,7 @@ const Navbar = () => {
               <a
                 key={index}
                 href={link}
-                className="text-white hover:text-gray-300 transition-colors"
+                className= "text-white lg:text-black dark:text-white hover:text-gray-300 transition-colors"
                 onClick={(e) => handleLinkClick(e, link)}
               >
                 {link.replace("#", "").charAt(0).toUpperCase() +

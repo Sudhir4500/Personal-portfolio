@@ -36,7 +36,7 @@ const Darkmode = () => {
   return (
     <div className=" dark:text-white">
         <button onClick={handlethemeswitch} className=" text-white ">
-            {theme === 'dark' ? 'Light' : 'Dark'}
+            {theme === 'dark' ?  <span className="material-icons">light_mode</span> :  <span className="material-icons">dark_mode</span>}
         </button>
       
     </div>
