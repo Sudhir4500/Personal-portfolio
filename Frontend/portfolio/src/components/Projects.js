@@ -20,7 +20,7 @@ const Projects = () => {
         }
   
         try {
-          const response = await axios.get(`${apiUrl}/projects/`, { timeout: 5000 });
+          const response = await axios.get(`${apiUrl}/projects/`);
           setProjects(response.data);
         } catch (err) {
           // console.error("Error fetching projects:", err);
