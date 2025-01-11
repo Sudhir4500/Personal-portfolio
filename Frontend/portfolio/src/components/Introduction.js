@@ -12,7 +12,7 @@ const IntroductionList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const apiUrl = process.env.REACT_APP_API_URL;
+      const apiUrl = 'https://personal-portfolio-git-b3f64f-sudhir-sharmas-projects-7a5f39ad.vercel.app';
   
       if (!apiUrl) {
         setError("API URL is not defined.");
