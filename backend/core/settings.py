@@ -156,8 +156,8 @@ USE_TZ = True
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR / 'media')  # Optional, depending on how you serve media
-MEDIA_URL = '/media/'  # Optional, depending on how you serve media
+MEDIA_ROOT = BASE_DIR / 'media'  # Optional, depending on how you serve media
+MEDIA_URL = os.environ.get('MEDIA_URL', '/media/') 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -171,6 +171,9 @@ REST_FRAMEWORK = {
 }
 CORS_ALLOW_CREDENTIALS = True
 
+# VERCEL_BLOB_API_URL = "https://blob.vercel-storage.com/v1/blob"
+DEFAULT_FILE_STORAGE = 'api.storage_backends.VercelBlobStorageBackend'
+# VERCEL_BLOB_RW_TOKEN = os.environ.get('VERCEL_BLOB_TOKEN')
 
 
 
