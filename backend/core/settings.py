@@ -4,6 +4,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
+from vercel_blob import VercelBlob
 
 load_dotenv()
 
@@ -154,7 +155,7 @@ USE_TZ = True
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-MEDIA_URL = ''  # Optional, depending on how you serve media
+MEDIA_ROOT = BASE_DIR / 'media'  # Optional, depending on how you serve media
 MEDIA_ROOT = ''
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -170,6 +171,13 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 
-BLOB_READ_WRITE_TOKEN="vercel_blob_rw_E9aiDY8gd2VqNbi5_2EOqfIrD2i024fWDIggAB4Fi0zPAUL"
+# Vercel Blob Storage
+VERCEL_BLOB_READ_WRITE_TOKEN = os.environ.get('VERCEL_BLOB_READ_WRITE_TOKEN') 
+vercel_blob = VercelBlob(VERCEL_BLOB_READ_WRITE_TOKEN)
+
+
+
 
 DEFAULT_FILE_STORAGE = 'api.storage.VercelBlobStorage'
+
+# print(os.environ.get('VERCEL_BLOB_READ_WRITE_TOKEN'), "hello")
