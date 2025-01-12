@@ -4,6 +4,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
+from vercel_storage import VercelBlobStorage
 
 
 load_dotenv()
