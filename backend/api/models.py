@@ -18,7 +18,7 @@ class Logo(models.Model):
 class Introduction(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='images/', blank=True)  # Temporary local upload
+    image = models.ImageField(upload_to='products/', blank=True)  # Temporary local upload
     title = models.CharField(max_length=200, blank=True)
     greet = models.CharField(max_length=200, blank=True)
 

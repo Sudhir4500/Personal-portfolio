@@ -4,7 +4,10 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-from vercel_storage import VercelBlobStorage
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 load_dotenv()
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'api',
     'corsheaders',
     'django_extensions',
+    'storages',
 ]
 
 # CORS_ALLOWED_ORIGINS = [
@@ -155,10 +159,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 # STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Optional, depending on how you serve media
-MEDIA_URL = os.environ.get('MEDIA_URL', '/media/') 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -172,9 +173,22 @@ REST_FRAMEWORK = {
 }
 CORS_ALLOW_CREDENTIALS = True
 
-# VERCEL_BLOB_API_URL = "https://blob.vercel-storage.com/v1/blob"
-DEFAULT_FILE_STORAGE = 'api.storage_backends.VercelBlobStorageBackend'
-# VERCEL_BLOB_RW_TOKEN = os.environ.get('VERCEL_BLOB_TOKEN')
+
+
+cloudinary.config( 
+    cloud_name = "dc6bcr6ez",  # Replace with your Cloudinary cloud name
+    api_key = "665523784459126",  # Replace with your Cloudinary API key
+    api_secret = "htY-wPdNdUqEtsY0g7exsPHWXYE",  # Replace with your Cloudinary API secret
+    secure=True  # Enables HTTPS URLs for the media files
+)
+
+# Django settings for handling media (uploads)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Use Cloudinary storage for media files
+MEDIA_URL = 'https://res.cloudinary.com/dc6bcr6ez/'  # This will be your Cloudinary URL (replace with your cloud name)
+
+# Optional: if you're using static files in Django
+
+
 
 
 
