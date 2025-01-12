@@ -1,5 +1,5 @@
 from django.db import models
-from .storage import VercelBlobStorage
+# from .storage import VercelBlobStorage
 
 
 # Create your models here.
@@ -20,7 +20,7 @@ class Logo(models.Model):
 class Introduction(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='images/', storage=VercelBlobStorage(), blank=True)
+    image = models.ImageField(upload_to='images/', blank=True) 
     title= models.CharField(max_length=200,blank=True)
     greet= models.CharField(max_length=200,blank=True)
    

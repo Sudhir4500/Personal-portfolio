@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-from vercel_blob import VercelBlob
+
 
 load_dotenv()
 
@@ -16,7 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&xp3c4q#n(l$($zf9&!$&xpx2(p%dqm)=d7ofne-nbmy5ec7ky'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -155,8 +156,8 @@ USE_TZ = True
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Optional, depending on how you serve media
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')  # Optional, depending on how you serve media
+MEDIA_URL = '/media/'  # Optional, depending on how you serve media
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -171,13 +172,6 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 
-# Vercel Blob Storage
-VERCEL_BLOB_READ_WRITE_TOKEN = os.environ.get('VERCEL_BLOB_READ_WRITE_TOKEN') 
-vercel_blob = VercelBlob(VERCEL_BLOB_READ_WRITE_TOKEN)
 
 
 
-
-DEFAULT_FILE_STORAGE = 'api.storage.VercelBlobStorage'
-
-# print(os.environ.get('VERCEL_BLOB_READ_WRITE_TOKEN'), "hello")
