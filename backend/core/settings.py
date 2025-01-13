@@ -4,7 +4,9 @@ from pathlib import Path
 import os
 import dj_database_url
 from dotenv import load_dotenv
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,23 +31,19 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '*']
 # settings.py
 
 INSTALLED_APPS = [
-     'cloudinary_storage',
-     'cloudinary',
-
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
     'django.contrib.staticfiles',
-
+    'cloudinary',
     'rest_framework',
     'api',
     'corsheaders',
     'django_extensions',
     'storages',
-    
 ]
 
 
@@ -147,11 +145,10 @@ USE_TZ = True
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -163,17 +160,12 @@ REST_FRAMEWORK = {
 }
 CORS_ALLOW_CREDENTIALS = True
 
-# Django settings for handling media (uploads)
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Use Cloudinary storage for media files
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dc6bcr6ez',
-    'API_KEY': '665523784459126',
-    'API_SECRET': 'htY-wPdNdUqEtsY0g7exsPHWXYE',
-}
-
-
-
-
+cloudinary.config(
+    cloud_name = 'dc6bcr6ez',
+    api_key= '665523784459126',
+    api_secret= 'htY-wPdNdUqEtsY0g7exsPHWXYE',
+    secure=True
+)
 
 

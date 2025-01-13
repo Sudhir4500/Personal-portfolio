@@ -5,6 +5,8 @@ from .serializers import ProjectSerializer, IntroductionSerializer, AboutSeriali
 
 # Create your views here
 # crearing the view for the logo
+
+
 class logoList(generics.ListAPIView):
     queryset = Logo.objects.all()
     serializer_class = logoserializer
