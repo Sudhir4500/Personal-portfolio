@@ -17,11 +17,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&xp3c4q#n(l$($zf9&!$&xpx2(p%dqm)=d7ofne-nbmy5ec7ky'
-# print(SECRET_KEY)
+SECRET_KEY=os.environ.get('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '*']
 
@@ -161,10 +161,11 @@ REST_FRAMEWORK = {
 CORS_ALLOW_CREDENTIALS = True
 
 
+
 cloudinary.config(
-    cloud_name = 'dc6bcr6ez',
-    api_key= '665523784459126',
-    api_secret= 'htY-wPdNdUqEtsY0g7exsPHWXYE',
+    cloud_name = os.environ.get('cloud_name'),
+    api_key=os.environ.get('api_key'),
+    api_secret=os.environ.get('api_secret'),
     secure=True
 )
 
