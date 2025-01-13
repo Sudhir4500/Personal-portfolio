@@ -49,21 +49,6 @@ INSTALLED_APPS = [
     
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",      # React app in local dev
-#     "http://192.168.0.6:3000", 
-#        'https://wqmdv72t-3000.inc1.devtunnels.ms',   # React app for network access
-#     # Add other allowed origins if needed
-# ]
-
-# CORS_ALLOWED_ORIGINS = [
-#     'https://wqmdv72t-3000.inc1.devtunnels.ms',
-# ]
-
-
-
-
-
 
 
 MIDDLEWARE = [
@@ -161,11 +146,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 # STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/' 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -178,16 +163,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 CORS_ALLOW_CREDENTIALS = True
-  # This will be your Cloudinary URL (replace with your cloud name)
 
 # Django settings for handling media (uploads)
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Use Cloudinary storage for media files
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Use Cloudinary storage for media files
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dc6bcr6ez',
     'API_KEY': '665523784459126',
     'API_SECRET': 'htY-wPdNdUqEtsY0g7exsPHWXYE',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory')
 }
 
 
