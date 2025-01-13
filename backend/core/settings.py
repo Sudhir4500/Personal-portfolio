@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 import cloudinary
 import cloudinary.uploader
-import cloudinary.api
+from cloudinary.utils import cloudinary_url
 
 
 load_dotenv()
@@ -34,17 +34,24 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '*']
 # settings.py
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cloudinary',
+
     'rest_framework',
     'api',
     'corsheaders',
     'django_extensions',
     'storages',
+    
 ]
 
 # CORS_ALLOWED_ORIGINS = [
@@ -160,6 +167,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 # STATICFILES_DIRS = [BASE_DIR/'static',]
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/' 
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -172,21 +183,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 CORS_ALLOW_CREDENTIALS = True
-
-
-
-cloudinary.config( 
-    cloud_name = "dc6bcr6ez",  # Replace with your Cloudinary cloud name
-    api_key = "665523784459126",  # Replace with your Cloudinary API key
-    api_secret = "htY-wPdNdUqEtsY0g7exsPHWXYE",  # Replace with your Cloudinary API secret
-    secure=True  # Enables HTTPS URLs for the media files
-)
+  # This will be your Cloudinary URL (replace with your cloud name)
 
 # Django settings for handling media (uploads)
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Use Cloudinary storage for media files
-MEDIA_URL = 'https://res.cloudinary.com/dc6bcr6ez/'  # This will be your Cloudinary URL (replace with your cloud name)
 
-# Optional: if you're using static files in Django
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dc6bcr6ez',
+    'API_KEY': '665523784459126',
+    'API_SECRET': 'htY-wPdNdUqEtsY0g7exsPHWXYE',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory')
+}
 
 
 
