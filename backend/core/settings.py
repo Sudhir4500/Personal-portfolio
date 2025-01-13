@@ -29,7 +29,8 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '*']
 # settings.py
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
+     'cloudinary_storage',
+     'cloudinary',
 
 
     'django.contrib.admin',
@@ -38,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'cloudinary',
 
     'rest_framework',
     'api',
