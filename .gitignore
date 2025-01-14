@@ -35,7 +35,5 @@ coverage/
 /static/
 /media/
 *.sqlite3
-/staticfiles/
-/staticfiles/*
 backend/staticfiles/
-/images/
+
