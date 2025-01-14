@@ -1,11 +1,10 @@
 const Footer = () => {
     // Social media links data
     const socialMediaLinks = [
-      { name: "Facebook", url: "https://www.facebook.com" },
-      { name: "Twitter", url: "https://www.twitter.com" },
-      { name: "Instagram", url: "https://www.instagram.com" },
-      { name: "LinkedIn", url: "https://www.linkedin.com" },
-      { name: "GitHub", url: "https://www.github.com" },
+      { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100006641689318" },
+      { name: "x", url: "https://x.com/Sudhirsharma450" },
+      { name: "LinkedIn", url: "ttps://www.linkedin.com/in/sudhir-sharma-b8a402207/" },
+      { name: "GitHub", url: "https://github.com/Sudhir4500" },
     ];
   
     return (
