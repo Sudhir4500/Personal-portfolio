@@ -43,10 +43,10 @@ const IntroductionList = () => {
   }
 
   return (
-    <section id="home" className="flex min-h-screen flex-wrap items-center py-8 lg:mt-3 lg:m-10 lg:pl-16">
+    <section id="home" className="flex min-h-screen flex-wrap items-center py-8 lg:m-10">
   {introductions.map((introduction) => (
     <React.Fragment key={introduction.id}>
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-1/2  ">
         <h2 className="my-8 text-4xl font-bold md:text-5xl lg:text-[4rem]">
           {introduction.name}..
         </h2>
@@ -57,7 +57,7 @@ const IntroductionList = () => {
           {introduction.description}
         </p>
       </div>
-      <div className="w-full md:w-1/2 lg:p-8">
+      <div className="w-full md:w-1/2 lg:pl-11 ">
         <div className="flex justify-center header">
           <img
             src={introduction.image}
