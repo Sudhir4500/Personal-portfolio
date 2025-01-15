@@ -43,7 +43,7 @@ const IntroductionList = () => {
   }
 
   return (
-    <section id="home" className="flex min-h-screen flex-wrap items-center py-8 lg:mt-3 ">
+    <section id="home" className="flex min-h-screen flex-wrap items-center py-8 lg:mt-3 lg:m-10 lg:pl-16">
   {introductions.map((introduction) => (
     <React.Fragment key={introduction.id}>
       <div className="w-full md:w-1/2">
