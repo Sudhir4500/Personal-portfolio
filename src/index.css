@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html , body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* bg-img{
+  background-image: url('../src/assets/bg-img5.png');
+} */
+/* html,body,*{
+margin:0;
+padding:0;
+
+} */
+
+
+/* img{
+  border-radius: 50%;
+  max-height:500px;
+  max-width:500px;
+   min-height:500px;
+  min-width:500px;
+  object-fit: cover;
+  object-position: 60% 20%;
+  border: 10px solid #fff;
+
+} */
+
+.profile-image {
+  border-radius: 50%;
+  max-height: 440px;
+  max-width: 440px;
+  min-height: 440px;
+  min-width: 440px;
+  object-fit: cover;
+  object-position: 60% 20%;
+  border: 10px solid #fff;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .profile-image {
+    max-height: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    min-width: 400px;
+    border-width: 5px; /* Reduce border width on smaller screens */
+    border: 10px solid #fff;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image {
+    max-height: 350px;
+    max-width: 350px;
+    min-height: 350px;
+    min-width: 350px;
+    border-width: 3px; /* Further reduce border width on very small screens */
+    border: 10px solid #fff;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
