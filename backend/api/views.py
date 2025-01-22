@@ -3,7 +3,7 @@ from rest_framework import generics
 from .models import Project, Introduction, About, MyService, Contact,Logo,Skill
 from .serializers import ProjectSerializer, IntroductionSerializer, AboutSerializer, MyServiceSerializer, ContactSerializer,logoserializer,SkillSerializer
 
-# Create your views here
+
 # crearing the view for the logo
 
 

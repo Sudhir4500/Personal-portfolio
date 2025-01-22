@@ -31,8 +31,8 @@ const Bio = () => {
       
         
   return (
-    <section className="pt-0 lg:pt-20" id="bio">
-    <h2 className=" mb-8 text-center text-3xl  lg:text-4xl">Bio</h2>
+    <section className="pt-0  lg:pt-20" id="bio">
+    <h2 className=" mb-8 pt-5 text-center text-3xl  lg:text-4xl">Bio</h2>
     <div className=' flex min-h-screen flex-wrap items-center'>
         { error? <p>Error: {error}</p> :(
         bio.map((bio) => (

@@ -32,7 +32,7 @@ const Skills = () => {
   return (
     <div id="skills" className="container mx-auto pt-0 lg:pt-2">
       <h2 className="text-3xl text-center mt-20 ">Skills</h2>
-      <div className="mx-2 flex flex-col rounded-3xl px-4 py-2 lg:px-20 border border-stone-50/30 ">
+      <div className="mx-2  lg:grid lg:grid-cols-3 flex flex-col rounded-3xl px-4 py-2 lg:px-20 border border-stone-50/30 ">
         {skills.map((skill, index) => (
           <div
             key={skill.id || index} // Prefer unique IDs over index if available
@@ -49,9 +49,6 @@ const Skills = () => {
                 }}
               ></div>
               <h3 className="text-3xl font-semibold">{skill.name}</h3>
-            </div>
-            <div className="text-md font-semibold lg:text-4xl">
-              <p>{skill.percentage}%</p>
             </div>
           </div>
         ))}
