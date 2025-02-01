@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 
+
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
