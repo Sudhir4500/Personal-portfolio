@@ -10,6 +10,7 @@ const ContactForm = () => {
     });
 
     const [responseMessage, setResponseMessage] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);  // Add a state to track the submitting process
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,6 +19,10 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Disable the submit button while submitting
+        setIsSubmitting(true);
+
         const apiUrl = process.env.REACT_APP_API_URL;
         axios.post(`${apiUrl}/contact/`, formData)
             .then((response) => {
@@ -28,9 +33,15 @@ const ContactForm = () => {
                     message: "",
                     service_type: "",
                 });
+
+                // Re-enable the submit button after 2 seconds
+                setTimeout(() => setIsSubmitting(false), 2000);  // 2 seconds delay
             })
             .catch((error) => {
                 setResponseMessage("Failed to submit the form. Please try again.");
+
+                // Re-enable the submit button if there's an error
+                setIsSubmitting(false);
             });
     };
 
@@ -85,9 +96,10 @@ const ContactForm = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        disabled={isSubmitting}  // Disable the button while submitting
+                        className={`w-full py-2 ${isSubmitting ? 'bg-gray-400' : 'bg-blue-500'} text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     >
-                        Submit
+                        {isSubmitting ? "Submitting..." : "Submit"}  {/* Change button text when submitting */}
                     </button>
                 </form>
                 {responseMessage && (
