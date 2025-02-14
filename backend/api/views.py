@@ -3,6 +3,7 @@ from rest_framework import generics
 from django.core.mail import send_mail
 from .models import Project, Introduction, About, MyService, Contact,Logo,Skill
 from .serializers import ProjectSerializer, IntroductionSerializer, AboutSerializer, MyServiceSerializer, ContactSerializer,logoserializer,SkillSerializer
+from django.conf import settings
 
 
 # crearing the view for the logo
@@ -28,9 +29,6 @@ class MyServiceList(generics.ListAPIView):
     serializer_class = MyServiceSerializer
 
 # creating the view for the contact
-# class ContactList(generics.CreateAPIView):
-#     queryset = Contact.objects.all()
-#     serializer_class = ContactSerializer
 class ContactList(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
@@ -51,8 +49,9 @@ class ContactList(generics.CreateAPIView):
         send_mail(
             subject,
             message,
-            'sharmasudhir04500@gmail.com',  # Sender email (must match EMAIL_HOST_USER)
-            ['sudhirsharma4500@gmail.com'],  # Recipient email
+            # 'sharmasudhir04500@gmail.com',  # Sender email (must match EMAIL_HOST_USER)
+            settings.EMAIL_HOST_USER,  # Sender email (must match EMAIL_HOST_USER)
+            [settings.EMAIL_RECEIVING_USER],  # Recipient email
             fail_silently=False,
         )
 
