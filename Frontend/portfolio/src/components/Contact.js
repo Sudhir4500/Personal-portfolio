@@ -26,7 +26,7 @@ const ContactForm = () => {
         const apiUrl = process.env.REACT_APP_API_URL;
         axios.post(`${apiUrl}/contact/`, formData)
             .then((response) => {
-                setResponseMessage("Thank you for contacting us!");
+                setResponseMessage("Thank you for reaching out!");
                 setFormData({
                     name: "",
                     email: "",
