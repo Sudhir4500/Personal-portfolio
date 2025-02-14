@@ -48,7 +48,7 @@ const ContactForm = () => {
     return (
         <div id="contact" className="flex items-center justify-center min-h-screen pb-10 ">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md dark:bg-gray-800 ">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center dark:text-white">Contact Us</h1>
+                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center dark:text-white">Contact Me</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div >
                         <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Name</label>
