@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Darkmode from "./Darkmode";
 
+
 const Navbar = () => {
   const [isMobMenu, setIsMobMenu] = useState(false);
   const [logos, setLogos] = useState([]);
