@@ -3,7 +3,7 @@ const Footer = () => {
     const socialMediaLinks = [
       { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100006641689318" },
       { name: "twitter", url: "https://x.com/Sudhirsharma450" },
-      { name: "LinkedIn", url: "ttps://www.linkedin.com/in/sudhir-sharma-b8a402207/" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/sudhir-sharma-b8a402207/" },
       { name: "GitHub", url: "https://github.com/Sudhir4500" },
       {name:"Gmail",url:"mailto:sudhirsharma4500@gmail.com"},
     ];
