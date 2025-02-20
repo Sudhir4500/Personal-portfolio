@@ -56,12 +56,12 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className=" h-[500px] w-[500px] md:h-[560px]  object-cover transition-transform duration-500 group-hover:scale-110"
+                className=" max-h-[550px] max-w-[560px]  object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className=" absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 group-hover:bg-black/70   text-white opacity-0 backdrop-blur-lg transition-opacity  duration-300 group-hover:opacity-100 ">
-                <h3 className=" mb-2 text-xl md:m-2">{project.title}</h3>
-                <p className="text-sm mb-12 p-4">{project.description}</p>
-                <h3 className=" text-sm  p-4">
+              <div className=" absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 group-hover:bg-black/70   text-white opacity-0 backdrop-blur-lg transition-opacity  duration-300 group-hover:opacity-100 pl-1"> 
+                <h3 className=" mb-1 text-xl p-2 text-center">{project.title}</h3>
+                <p className="text-sm mb-8 p-4">{project.description}</p>
+                <h3 className=" text-sm  p-4 pb-4 ">
                   It is written in:
                   <span className=" p-1 font-bold text-red-500 text-xl">
                     {project.programming_languages}
