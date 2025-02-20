@@ -44,10 +44,10 @@ const Navbar = () => {
       }
   
       const controller = new AbortController(); // For aborting the request on cleanup
-      const signal = controller.signal;
+      
   
       try {
-        const response = await axios.get(`${apiUrl}/logo/`, { signal, timeout: 5000 }); // 5-second timeout
+        const response = await axios.get(`${apiUrl}/logo/`); // 5-second timeout
         setLogos(response.data); // Update state with the fetched data
       } catch (err) {
         if (axios.isCancel(err)) {
