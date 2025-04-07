@@ -81,3 +81,55 @@ padding:0;
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+/* loading text revealing animation */
+/* index.css */
+@keyframes reveal {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* ✅ Light Mode */
+.reveal-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #000 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: reveal 2.5s ease-in-out forwards;
+}
+
+/* ✅ Dark Mode */
+.dark .reveal-text {
+  background: linear-gradient(90deg, #fff 50%, rgba(255, 255, 255, 0.2) 50%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: reveal 2.5s ease-in-out forwards;
+}
+
+/* ✅ Fix for visibility while loading */
+.dark .reveal-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(255, 255, 255, 0.1); /* Ensures text is visible */
+}
+
+/* ✅ Mobile responsive */
+@media (max-width: 768px) {
+  .reveal-text {
+    font-size: 2rem;
+  }
+}

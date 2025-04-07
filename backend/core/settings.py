@@ -170,3 +170,13 @@ cloudinary.config(
 )
 
 
+# setup the email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Use SMTP email backend
+EMAIL_HOST = os.environ.get('EMAIL_HOST')  
+EMAIL_PORT = os.environ.get('EMAIL_PORT')  # SMTP port for Gmail
+EMAIL_USE_TLS = True  # Use TLS for secure connection
+EMAIL_HOST_USER =os.environ.get('EMAIL_HOST_USER')  
+EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_HOST_PASSWORD')   # Replace with your email password (or app password if 2FA is enabled)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set default sender email
+EMAIL_RECEIVING_USER = os.environ.get('EMAIL_RECEIVING_USER')  # Set receiving email
+

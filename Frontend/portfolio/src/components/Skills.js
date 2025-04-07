@@ -43,11 +43,13 @@ const Skills = () => {
             <div className="flex items-center">
               {/* Render logo using a div with a background image */}
               <div
-                className="w-10 h-10 bg-cover bg-center mr-4"
+                className="w-10 h-10 bg-cover bg-center mr-4  rounded-lg"
                 style={{
+
                     backgroundImage: `url(${skill.logo ? skill.logo : getLogoUrl(skill.name)})`, // Use backend logo if available, else fallback to CDN
                 }}
-              ></div>
+              >
+              </div>
               <h3 className="text-3xl font-semibold">{skill.name}</h3>
             </div>
           </div>

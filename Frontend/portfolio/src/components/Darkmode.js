@@ -1,46 +1,59 @@
-// desc: Darkmode component
-
 import { useEffect, useState } from "react";
 
 const Darkmode = () => {
-    const [theme, setTheme] = useState(null);
+    const getSystemPreference = () => 
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
-// to check if the user prefers dark mode or not
-    useEffect(()=>{
-        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-            setTheme('dark');
-    }
-    else{
-        setTheme('light');
-    }
-    },[]);
+    const getInitialTheme = () => {
+        // Check localStorage first
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) return storedTheme;
+        // If no user preference, use system setting
+        return getSystemPreference();
+    };
 
-    useEffect(()=>{
-        if(theme === 'dark'){
-            document.documentElement.classList.add('dark');
+    const [theme, setTheme] = useState(getInitialTheme);
+
+    useEffect(() => {
+        // Apply theme
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
         }
-        else{
-            document.documentElement.classList.remove('dark');
-        }
-    },[theme]);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
-    const handlethemeswitch=()=>{
-        if(theme === 'dark'){
-            setTheme('light');
-        }
-        else{
-            setTheme('dark');
-        }
-    }
+    useEffect(() => {
+        // Listen for system theme changes
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-  return (
-    <div className=" dark:text-white">
-        <button onClick={handlethemeswitch} className=" text-white ">
-            {theme === 'dark' ?  <span className="material-icons">light_mode</span> :  <span className="material-icons">dark_mode</span>}
-        </button>
-      
-    </div>
-  )
-}
+        const handleSystemThemeChange = (e) => {
+            if (!localStorage.getItem("theme")) {
+                setTheme(e.matches ? "dark" : "light");
+            }
+        };
 
-export default Darkmode
+        mediaQuery.addEventListener("change", handleSystemThemeChange);
+        return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    }, []);
+
+    const handleThemeSwitch = () => {
+        setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+        localStorage.setItem("theme", theme === "dark" ? "light" : "dark"); // Save choice
+    };
+
+    return (
+        <div className="dark:text-white">
+            <button onClick={handleThemeSwitch} className="text-white">
+                {theme === "dark" ? (
+                    <span className="material-icons">light_mode</span>
+                ) : (
+                    <span className="material-icons">dark_mode</span>
+                )}
+            </button>
+        </div>
+    );
+};
+
+export default Darkmode;

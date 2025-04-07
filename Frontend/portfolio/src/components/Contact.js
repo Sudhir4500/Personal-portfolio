@@ -10,6 +10,7 @@ const ContactForm = () => {
     });
 
     const [responseMessage, setResponseMessage] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);  // Add a state to track the submitting process
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,26 +19,36 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Disable the submit button while submitting
+        setIsSubmitting(true);
+
         const apiUrl = process.env.REACT_APP_API_URL;
         axios.post(`${apiUrl}/contact/`, formData)
             .then((response) => {
-                setResponseMessage("Thank you for contacting us!");
+                setResponseMessage("Thank you for reaching out!");
                 setFormData({
                     name: "",
                     email: "",
                     message: "",
                     service_type: "",
                 });
+
+                // Re-enable the submit button after 2 seconds
+                setTimeout(() => setIsSubmitting(false), 2000);  // 2 seconds delay
             })
             .catch((error) => {
                 setResponseMessage("Failed to submit the form. Please try again.");
+
+                // Re-enable the submit button if there's an error
+                setIsSubmitting(false);
             });
     };
 
     return (
         <div id="contact" className="flex items-center justify-center min-h-screen pb-10 ">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md dark:bg-gray-800 ">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center dark:text-white">Contact Us</h1>
+                <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center dark:text-white">Contact Me</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div >
                         <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-white">Name</label>
@@ -85,9 +96,10 @@ const ContactForm = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        disabled={isSubmitting}  // Disable the button while submitting
+                        className={`w-full py-2 ${isSubmitting ? 'bg-gray-400' : 'bg-blue-500'} text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                     >
-                        Submit
+                        {isSubmitting ? "Submitting..." : "Submit"}  {/* Change button text when submitting */}
                     </button>
                 </form>
                 {responseMessage && (

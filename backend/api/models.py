@@ -51,7 +51,8 @@ class Project(models.Model):
     image = CloudinaryField('image',blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    url = models.URLField(blank=True)
+    Github_url = models.URLField(blank=True)
+    live_url = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     programming_languages = models.CharField(max_length=200)
 
