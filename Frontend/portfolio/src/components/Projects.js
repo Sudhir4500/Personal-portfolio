@@ -61,13 +61,13 @@ const Projects = () => {
               </div>
               <div className="absolute inset-0 flex flex-col items-center justify-between bg-black/60 group-hover:bg-black/75 text-white opacity-0 backdrop-blur-lg transition-opacity duration-300 group-hover:opacity-100 p-6">
                 <div className="flex flex-col items-center text-center space-y-6">
-                  <h3 className="text-xl font-bold tracking-wide">
+                  <h3 className="text-xl font-bold tracking-wide mb-3">
                     {project.title}
                   </h3>
                   <p className="text-sm leading-relaxed">
                     {project.description}
                   </p>
-                  <h3 className="text-sm font-medium mt-4">
+                  <h3 className="text-sm font-medium mt-9">
                     It is written in:
                     <span className="font-bold text-red-500 text-lg pl-2">
                       {project.programming_languages}
