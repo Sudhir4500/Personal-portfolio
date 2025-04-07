@@ -50,7 +50,7 @@ const Projects = () => {
           projects.map((project) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden rounded-3xl w-[400px] h-[550px] mx-auto shadow-lg"
+              className="group relative overflow-hidden rounded-3xl w-full lg:w-[400px] h-[550px] mx-auto shadow-lg"
             >
               <div className="absolute inset-0">
                 <img
