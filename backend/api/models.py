@@ -14,11 +14,6 @@ class Logo(models.Model):
     def __str__(self):
         return self.name or f"Logo {self.id}"
     
-# creating a model for navbar containing the navbar items
-
-
-
-
 # create a model for the introduction
 class Introduction(models.Model):
     name = models.CharField(max_length=200)

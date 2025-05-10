@@ -5,7 +5,7 @@ from .serializers import ProjectSerializer, IntroductionSerializer, AboutSeriali
 
 # Create your views here
 # crearing the view for the logo
-class logoList(generics.ListCreateAPIView):
+class logoList(generics.ListAPIView):
     queryset = Logo.objects.all()
     serializer_class = logoserializer
 
@@ -15,28 +15,28 @@ class IntroductionList(generics.ListAPIView):
     serializer_class = IntroductionSerializer
 
 # creating the view for the About me
-class AboutList(generics.ListCreateAPIView):
+class AboutList(generics.ListAPIView):
     queryset = About.objects.all()
     serializer_class = AboutSerializer
 
 # creating the view for the myservices
-class MyServiceList(generics.ListCreateAPIView):
+class MyServiceList(generics.ListAPIView):
     queryset = MyService.objects.all()
     serializer_class = MyServiceSerializer
 
 # creating the view for the contact
-class ContactList(generics.ListCreateAPIView):
+class ContactList(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
 
 
 # creating the view for the project
-class ProjectList(generics.ListCreateAPIView):
+class ProjectList(generics.ListAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
 # creating the view for the skills
-class SkillList(generics.ListCreateAPIView):
+class SkillList(generics.ListAPIView):
     queryset = Skill.objects.all()
     serializer_class = SkillSerializer
 
